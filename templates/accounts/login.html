@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    LogIn
+{% endblock title %}
+{% block base %}
+    <div class="container pt-6">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <!-- Make it use email instead of username problem generated because of Login forn -->
+            <div class="col">{{ form.username|as_crispy_field }}</div> 
+
+            <div class="col">{{ form.password|as_crispy_field }}</div>
+            <button type="submit" class="btn btn-success btn-rounded">Sign In</button>
+        </form>
+    </div>
+{% endblock base %}
