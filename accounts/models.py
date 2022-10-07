@@ -39,7 +39,7 @@ class Account(AbstractBaseUser):
     USERNAME_FIELD: str = "email"
     REQUIRED_FIELDS = ["first_name", "last_name", "department"]
 
-    objects = UserManager
+    objects = UserManager()
 
     def __str__(self) -> str:
         if self.roll_number and self.username:
