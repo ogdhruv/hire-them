@@ -21,4 +21,5 @@ from base.settings import MEDIA_ROOT, MEDIA_URL
 urlpatterns = [
     path("backend/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
+    path("blogs/", include("blogs.urls")),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)

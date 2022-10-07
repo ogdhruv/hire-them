@@ -33,7 +33,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # locally added
     "accounts.apps.AccountsConfig",
+    "blogs.apps.BlogsConfig",
+    # pre installed
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
