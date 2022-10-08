@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ blog.title | truncatewords:2 }}
+{% endblock title %}
+{% block base %}
+{{blog.title}}
+<p>{{blog.body}}</p>
+<section>
+    {{blog.created}} | {{blog.updated}}
+</section>
+<a href="{% url 'blog_update' blog.pk %}">Update</a>
+{% endblock base %}

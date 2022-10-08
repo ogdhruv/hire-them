@@ -1,13 +1,16 @@
 {% extends "base.html" %}
-
-{% block title %} Blogs {% endblock title %}
-
+{% block title %}
+    blogs
+{% endblock title %}
 {% block base %}
-    {% if post_list %}
-    {% for post in post_list %}
-    {{ post.title | post.body }}
-    {% endfor %}
+    {% if blogs %}
+        {% for blog in blogs %}
+            <a href="{% url 'blog_detail' blog.pk %}">
+            <h4>{{ blog.title }}<h4></a>
+            <br>
+            <p>{{ blog.body|truncatechars_html:100 }}</p>
+        {% endfor %}
     {% else %}
-    <h1> No blog right now! </h1>
-    {% end if %}
+        <h1>No blog right now!</h1>
+    {% endif %}
 {% endblock base %}
