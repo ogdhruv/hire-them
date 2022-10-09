@@ -12,5 +12,6 @@
         {% endfor %}
     {% else %}
         <h1>No blog right now!</h1>
+        <p><a href="{% url 'blog_create' %}">New blog</a></p>
     {% endif %}
 {% endblock base %}

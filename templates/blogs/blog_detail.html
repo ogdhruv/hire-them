@@ -8,5 +8,6 @@
 <section>
     {{blog.created}} | {{blog.updated}}
 </section>
-<a href="{% url 'blog_update' blog.pk %}">Update</a>
+<a href="{% url 'blog_update' blog.pk %}">Update</a> | 
+<a href="{% url 'blog_delete' blog.pk %}">Delete</a>
 {% endblock base %}
