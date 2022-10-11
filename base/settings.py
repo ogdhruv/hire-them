@@ -89,6 +89,8 @@ DATABASES = {
     }
 }
 
+#backend for overriding username with email while login
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -143,3 +145,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "blogs"
 LOGOUT_REDIRECT_URL = "blogs"
+
+AUTH_USER_MODEL="accounts.Account"
