@@ -5,8 +5,14 @@ from django.views.generic import (
     UpdateView,
     DetailView,
 )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 
+
+class BlogCreateView(LoginRequiredMixin,CreateView):
+    model = Post
+    template_name: str = "blogs/blog_create.html"
+    fields = ["title","author","body"]
 
 class BlogListView(ListView):
     model = Post
@@ -18,8 +24,13 @@ class BlogDetailView(DetailView):
     template_name: str = "blogs/blog_detail.html"
     context_object_name: str = "blog"
 
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(LoginRequiredMixin,UpdateView):
     model = Post
     template_name: str = "blogs/blog_update.html"
     context_object_name: str = "blog"
-    fields = ["title","slug","body"]
+    fields = ["title","body"]
+
+class BlogDeleteView(LoginRequiredMixin,DeleteView):
+    model = Post
+    template_name: str = "blogs/blog_delete.html"
+    success_url = "blogs"
