@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.contrib.auth.models import AbstractBaseUser
+from django.utils.translation import gettext_lazy as _
 from .manager import UserManager
 
 # AbstractUser can also be used because it already have some predefined model fields
@@ -24,8 +25,7 @@ class Account(AbstractBaseUser):
 
     department = models.CharField(
         max_length=30,
-        choices=Department.choices,
-        default=Department.OT,
+        choices=Department.choices,blank=True,null=True,
     )
 
     # required
@@ -37,20 +37,23 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD: str = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name", "department"]
+    REQUIRED_FIELDS = ["first_name", "last_name",]
 
     objects = UserManager()
 
     def __str__(self) -> str:
-        if self.roll_number and self.username:
+        if self.roll_number and self.first_name:
             return "{} - {}".format(self.email, self.roll_number)
 
         else:
             return self.email
 
     # must add in
+    def get_profile_image_filename(self):
+        return str(self.profile_picture)[str(self.profile_picture).index(f'photos/profiles/{self.pk}/')]
+
     def has_perm(self, perm, obj=None):
         return self.is_admin
 
-    def has_module_perms(self, add_label):
+    def has_module_perms(self, app_label):
         return True
