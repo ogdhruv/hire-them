@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # pip installed
     "crispy_forms",
+    'tailwind',
+    "theme",
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "base.urls"
@@ -63,7 +67,7 @@ ROOT_URLCONF = "base.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "theme/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -124,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR,"static")
+STATIC_ROOT = os.path.join(BASE_DIR,"theme/static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -141,3 +145,8 @@ LOGIN_REDIRECT_URL = "blogs"
 LOGOUT_REDIRECT_URL = "blogs"
 
 AUTH_USER_MODEL="accounts.Account"
+TAILWIND_APP_NAME = 'theme'
+TAILWIND_CSS_PATH = 'css/dist/styles.css'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
