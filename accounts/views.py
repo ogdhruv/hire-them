@@ -8,7 +8,7 @@ class CustomRegistrationView(CreateView):
     form_class = CustomRegistrationForm
     success_url = reverse_lazy("login")
     redirect_authenticated_user = True
-    template_name: str = "accounts/signup.html"
+    template_name: str = "accounts/register.html"
     success_message = "You registered successfully."
 
 
@@ -17,3 +17,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user: bool = True
     success_url = reverse_lazy("home")
     template_name: str = "accounts/login.html"
+
+class CustomLogoutView(LogoutView):
+    template_name: str = "accounts/logout.html"
+    next_page = None
