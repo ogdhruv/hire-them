@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Register
+{% endblock title %}
+{% if user.is_authenticated %}
+    <p>You are already logged in {{ user.first_name }}</p>
+{% else %}
+    {% block base %}
+        <div class="container pt-6">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="col">{{ form.email|as_crispy_field }}</div>
+                <div class="row">
+                    <div class="col-6">{{ form.first_name|as_crispy_field }}</div>
+                    <div class="col-6">{{ form.last_name|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">{{ form.password1|as_crispy_field }}</div>
+                    <div class="col-6">{{ form.password2|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">{{ form.department|as_crispy_field }}</div>
+                    <div class="col-6">{{ form.profile_picture|as_crispy_field }}</div>
+                </div>
+                <div class="col">{{ form.roll_number|as_crispy_field }}</div>
+                {{ form.bio|as_crispy_field }}
+                
+                <button type="submit" class="btn btn-success btn-rounded">Register</button>
+            </form>
+        </div>
+    {% endblock base %}
+{% endif %}
