@@ -16,6 +16,7 @@ class Account(AbstractBaseUser):
         ME = "ME", "MECHANICAL ENGINEERING"
         OT = "OT", "OTHER"
 
+    username = None
     email = models.EmailField(max_length=100, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
