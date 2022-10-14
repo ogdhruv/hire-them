@@ -1,10 +1,13 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+
+from accounts.models import Account
 from .forms import CustomRegistrationForm, CustomLoginForm
 
 
 class CustomRegistrationView(CreateView):
+    model = Account
     form_class = CustomRegistrationForm
     success_url = reverse_lazy("login")
     redirect_authenticated_user = True
@@ -13,10 +16,11 @@ class CustomRegistrationView(CreateView):
 
 
 class CustomLoginView(LoginView):
-    form_class = CustomLoginForm
+    model = Account
     redirect_authenticated_user: bool = True
     success_url = reverse_lazy("home")
     template_name: str = "accounts/login.html"
+
 
 class CustomLogoutView(LogoutView):
     template_name: str = "accounts/logout.html"

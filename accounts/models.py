@@ -26,7 +26,9 @@ class Account(AbstractBaseUser):
 
     department = models.CharField(
         max_length=30,
-        choices=Department.choices,blank=True,null=True,
+        choices=Department.choices,
+        blank=True,
+        null=True,
     )
 
     # required
@@ -38,7 +40,10 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD: str = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name",]
+    REQUIRED_FIELDS = [
+        "first_name",
+        "last_name",
+    ]
 
     objects = UserManager()
 
@@ -51,7 +56,9 @@ class Account(AbstractBaseUser):
 
     # must add in
     def get_profile_image_filename(self):
-        return str(self.profile_picture)[str(self.profile_picture).index(f'photos/profiles/{self.pk}/')]
+        return str(self.profile_picture)[
+            str(self.profile_picture).index(f"photos/profiles/{self.pk}/")
+        ]
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
