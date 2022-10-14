@@ -36,7 +36,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # locally added
     "accounts.apps.AccountsConfig",
+    "theme.apps.ThemeConfig",
     "blogs.apps.BlogsConfig",
+    "rooms.apps.RoomsConfig",
+
     # pre installed
     "django.contrib.admin",
     "django.contrib.auth",
@@ -46,9 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # pip installed
     "crispy_forms",
-    'tailwind',
-    "theme",
-    'django_browser_reload',
+    "tailwind",
+    "django_browser_reload",
 ]
 
 MIDDLEWARE = [
@@ -128,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR,"theme/static")
+STATIC_ROOT = os.path.join(BASE_DIR, "theme/static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -144,9 +146,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 LOGIN_REDIRECT_URL = "blogs"
 LOGOUT_REDIRECT_URL = "blogs"
 
-AUTH_USER_MODEL="accounts.Account"
-TAILWIND_APP_NAME = 'theme'
-TAILWIND_CSS_PATH = 'css/dist/styles.css'
+AUTH_USER_MODEL = "accounts.Account"
+TAILWIND_APP_NAME = "theme"
+TAILWIND_CSS_PATH = "css/dist/styles.css"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
