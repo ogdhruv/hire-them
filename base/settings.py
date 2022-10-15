@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "theme.apps.ThemeConfig",
     "blogs.apps.BlogsConfig",
     "rooms.apps.RoomsConfig",
-
     # pre installed
     "django.contrib.admin",
     "django.contrib.auth",
@@ -51,6 +50,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "tailwind",
     "django_browser_reload",
+    "taggit",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,4 @@ TAILWIND_CSS_PATH = "css/dist/styles.css"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+TAGGIT_CASE_INSENSITIVE = True
