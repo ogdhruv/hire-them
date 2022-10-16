@@ -1,8 +1,7 @@
-from django import views
 from django.urls import path
-from .views import dashboard, rooms
+from .views import rooms,room
 
 urlpatterns = [
-    path("", view=dashboard, name="dashboard"),
-    path("rooms/", view=rooms, name="rooms"),
+    path("", view=rooms, name="rooms"),
+    path("?=<int:pk>/",view=room,name="room"),
 ]
