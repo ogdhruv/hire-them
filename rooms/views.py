@@ -1,13 +1,12 @@
-from tempfile import TemporaryDirectory
-from unittest import TestProgram
 from django.shortcuts import render
-
-# Create your views here.
-
-
-def dashboard(request):
-    return render(request, template_name="rooms/dashboard.html")
-
+from rooms.models import Room
 
 def rooms(request):
-    return render(request, template_name="rooms/rooms.html")
+    rooms = Room.objects.all()
+    context = {'rooms':rooms}
+    return render(request,"rooms/rooms.html",context)
+
+def room(request,pk):
+    room = Room.objects.get(id=pk)
+    context = {'room':room}
+    return render(request,"rooms/room.html",context)
