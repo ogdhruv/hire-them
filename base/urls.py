@@ -21,7 +21,8 @@ from base.settings import MEDIA_ROOT, MEDIA_URL
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path("admin/", admin.site.urls),
+    path("",include("jobs.urls")),
     path("accounts/", include("accounts.urls")),
-    path("", include("rooms.urls")),
+    path("rooms/", include("rooms.urls")),
     path("blogs/", include("blogs.urls")),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
