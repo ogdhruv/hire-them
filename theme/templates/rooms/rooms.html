@@ -1,1 +1,19 @@
-<h1>Rooms</h1>
+{% for room in rooms %}
+<div class="roomListRoom">
+    <div class="roomListRoom__header">
+        <div class="roomListRoom__actions">
+            <span>{{room.created|timesince}} ago</span>
+        </div>
+    </div>
+    <div class="roomListRoom__content">
+        <a href="{% url 'room' room.id %}">{{room.name}}</a>
+    </div>
+    <div class="roomListRoom__meta">
+        <a href="{% url 'room' room.id %}" class="roomListRoom__joined">
+            {{room.participants.all.count}} Joined
+        </a>
+        <!-- <p class="roomListRoom__topic"></p> -->
+    </div>
+</div>
+<br>
+{% endfor %}
