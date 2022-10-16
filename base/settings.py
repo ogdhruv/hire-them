@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "theme.apps.ThemeConfig",
     "blogs.apps.BlogsConfig",
     "rooms.apps.RoomsConfig",
+    "jobs.apps.JobsConfig",
     # pre installed
     "django.contrib.admin",
     "django.contrib.auth",
