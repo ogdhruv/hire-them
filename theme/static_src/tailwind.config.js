@@ -6,6 +6,8 @@
  */
 
 module.exports = {
+    /* if want dar mode in tailwind add below */
+    // darkMode: 'class',
     content: [
         /**
          * HTML. Paths to Django template files that will contain Tailwind CSS classes.
