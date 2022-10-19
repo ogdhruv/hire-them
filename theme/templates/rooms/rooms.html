@@ -1,15 +1,19 @@
+<a href="{% url 'create_room' %}">create room</a>
+
 {% for room in rooms %}
-<div class="roomListRoom">
-    <div class="roomListRoom__header">
-        <div class="roomListRoom__actions">
+<a href="{% url 'update_room' room.id %}">edit</a>
+<a href="{% url 'delete_room' room.id %}">delete</a>
+<div>
+    <div>
+        <div>
             <span>{{room.created|timesince}} ago</span>
         </div>
     </div>
-    <div class="roomListRoom__content">
+    <div>
         <a href="{% url 'room' room.id %}">{{room.name}}</a>
     </div>
-    <div class="roomListRoom__meta">
-        <a href="{% url 'room' room.id %}" class="roomListRoom__joined">
+    <div>
+        <a href="{% url 'room' room.id %}">
             {{room.participants.all.count}} Joined
         </a>
         <!-- <p class="roomListRoom__topic"></p> -->
