@@ -17,6 +17,9 @@ class Room(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
 
+    class Meta:
+        ordering = ["-updated", "-created"]
+
     def __str__(self):
         return self.name
 
