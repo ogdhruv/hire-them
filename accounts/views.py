@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import Account
 from .forms import CustomRegistrationForm, CustomLoginForm
 
@@ -23,6 +23,5 @@ class CustomLoginView(LoginView):
     template_name: str = "accounts/login.html"
 
 
-class CustomLogoutView(LogoutView):
-    template_name: str = "accounts/logout.html"
-    next_page = None
+class CustomLogoutView(LoginRequiredMixin, LogoutView):
+    pass
