@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
 from rooms.forms import RoomForm
 from rooms.models import Room
 
@@ -9,12 +10,15 @@ def rooms(request):
     return render(request, "rooms/rooms.html", context)
 
 
+@login_required
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    context = {"room": room}
+    messages = room.message_set.all()
+    context = {"room": room, "messages":messages}
     return render(request, "rooms/room.html", context)
 
 
+@user_passes_test(lambda u: u.is_staff)
 def createRoom(request):
     form = RoomForm()
     # process data from form
@@ -28,6 +32,7 @@ def createRoom(request):
     return render(request, "rooms/room_form.html", context)
 
 
+@user_passes_test(lambda u: u.is_staff)
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
@@ -39,10 +44,11 @@ def updateRoom(request, pk):
     context = {"form": form}
     return render(request, "rooms/room_form.html", context)
 
-def deleteRoom(request,pk):
+
+@user_passes_test(lambda u: u.is_staff)
+def deleteRoom(request, pk):
     room = Room.objects.get(id=pk)
     if request.method == "POST":
         room.delete()
         return redirect("rooms")
-    return render(request,"rooms/delete_room.html",{"obj":room})
-    
+    return render(request, "rooms/delete_room.html", {"obj": room})
