@@ -1,8 +1,13 @@
+Hi! {{request.user.first_name}}
+{% if request.user.is_superadmin %}
 <a href="{% url 'create_room' %}">create room</a>
+{% endif %}
 
 {% for room in rooms %}
+{% if request.user.is_superadmin %}
 <a href="{% url 'update_room' room.id %}">edit</a>
 <a href="{% url 'delete_room' room.id %}">delete</a>
+{% endif %}
 <div>
     <div>
         <div>

@@ -1,1 +1,11 @@
 {{room.name}}
+{{room.description|truncatewords:20|safe}}
+
+<div class="container">
+    <h2>convo</h2>
+    <hr>
+    {% for message in messages %}
+        {{message.user.first_name}} - {{message.body}}
+
+    {% endfor %}
+</div>
