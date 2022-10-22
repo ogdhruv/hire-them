@@ -16,5 +16,5 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = ["user", "room", "created"]
     search_fields = ["room"]
     date_hierarchy = "created"
-    readonly_fields = ("user", "room", "created")
+    readonly_fields = ["created"]
     ordering = ["created"]
