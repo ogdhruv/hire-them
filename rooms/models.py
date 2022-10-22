@@ -12,7 +12,9 @@ class Room(models.Model):
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = RichTextField()
-    # participants =
+    participants = models.ManyToManyField(
+        Account, related_name="participants", blank=True
+    )
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
