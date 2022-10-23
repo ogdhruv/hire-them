@@ -138,17 +138,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, "theme/static")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-AUTH_USER_MODEL = "accounts.Account"
 
 # media file configuration
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
+AUTH_USER_MODEL = "accounts.Account"
 
 LOGIN_REDIRECT_URL = "blogs"
 LOGOUT_REDIRECT_URL = "blogs"
 
-AUTH_USER_MODEL = "accounts.Account"
+
 TAILWIND_APP_NAME = "theme"
 TAILWIND_CSS_PATH = "css/dist/styles.css"
 INTERNAL_IPS = [
