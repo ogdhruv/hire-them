@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
             last_name=last_name,
             roll_no=roll_no,
             department=department,
-            is_active=True
+            is_active=True,
         )
         user.set_password(password)
         user.save(using=self._db)
