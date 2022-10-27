@@ -13,8 +13,8 @@ def rooms(request):
 @login_required
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    messages = room.message_set.all()
-    context = {"room": room, "messages": messages}
+    room_messages = room.message_set.all().order_by('-created')
+    context = {"room": room, "room_messages": room_messages}
     return render(request, "rooms/room.html", context)
 
 
