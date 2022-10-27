@@ -4,8 +4,11 @@
 <div class="container">
     <h2>convo</h2>
     <hr>
-    {% for message in messages %}
-        {{message.user.first_name}} - {{message.body}}
-
+    {% for message in room_messages %}
+        <div>
+        <small>@{{message.user.first_name}} {{message.created|timesince}}</small>
+        <p>{{message.body}}</p>
+        <hr>
+        </div>
     {% endfor %}
 </div>
