@@ -1,6 +1,6 @@
 {{room.name}}
 {{room.description|truncatewords:20|safe}}
-
+Total Participants : {{room.participants.}}
 <div class="container">
     <h2>convo</h2>
     <hr>
@@ -11,4 +11,10 @@
         <hr>
         </div>
     {% endfor %}
+    <div>
+        <form action="" method="post">
+            {% csrf_token%}
+            <input type="text" name="body" placeholder="Write your message here...">
+        </form>
+    </div>
 </div>
