@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from rooms.forms import RoomForm
-from rooms.models import Room
+from rooms.models import Message, Room
 
 
 def rooms(request):
@@ -14,7 +14,17 @@ def rooms(request):
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
-    context = {"room": room, "room_messages": room_messages}
+    participants = room.participants.all()
+    if request.method == "POST":
+        message = Message.objects.create(
+            user = request.user,
+            room = room,
+            body = request.POST.get('body'),
+        )
+        room.participants.add(request.user)
+        return redirect("room",pk=room.id)
+
+    context = {"room": room, "room_messages": room_messages,"participants": participants}
     return render(request, "rooms/room.html", context)
 
 
