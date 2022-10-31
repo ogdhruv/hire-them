@@ -16,5 +16,5 @@ class JobAdmin(admin.ModelAdmin):
     list_display = ["title", "company", "postedby", "created"]
     search_fields = ["company", "title"]
     date_hierarchy = "updated"
-    readonly_fields = ("postedby", "created", "updated")
+    readonly_fields = ("created", "updated")
     ordering = ["updated"]
