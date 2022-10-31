@@ -7,14 +7,14 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 class Company(models.Model):
-    # class JobType(models.TextChoices):
-    #     INTERNSHIP = 'IS', _('INTERNSHIP')
-    #     FULLTIME = 'FT', _('FULLTIME')
-    #     PARTTIME = 'PT', _('PARTTIME')
+    class JobType(models.TextChoices):
+        INTERNSHIP = 'IS', _('INTERNSHIP')
+        FULLTIME = 'FT', _('FULLTIME')
+        PARTTIME = 'PT', _('PARTTIME')
 
     name = models.CharField(max_length=200)
     type = models.TextChoices("JobType", "INTERN FULLTIME PARTTIME")
-    # type = models.CharField(max_length=2,choices=JobType.choices,default=JobType.FULLTIME)
+    type = models.CharField(max_length=2,choices=JobType.choices,default=JobType.FULLTIME)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
